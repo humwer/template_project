@@ -1,9 +1,17 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from fake_useragent import UserAgent
 
 
 class WebWalker:
 
     def __init__(self, url: str):
-        pass
+        self.url = url
+        self.options = Options()
+        self.options.add_argument(f'user-agent={UserAgent().random}')
+        self.browser = webdriver.Chrome(options=self.options)
+        self.wait_time = 10
+        print("[+] Opened browser Google Chrome")
 
     def __del__(self):
         pass
