@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from fake_useragent import UserAgent
 from random import randrange
 import time
+import re
 
 
 def real_user(method):
@@ -98,3 +99,28 @@ class WebWalker:
         except WebDriverException:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
+
+    @real_user
+    def find_text_in_element_by_regex(self, selectors: tuple, regex: str):
+        try:
+            if self.last_error is None:
+                element = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+                found_matches = re.findall(regex, element.text)
+                if len(found_matches) == 0:
+                    print(f"[-] Not found matches in the element by regex: '{regex}'")
+                    return found_matches
+                else:
+                    print(f"[+] Found matches: {len(found_matches)} in the element by regex: '{regex}'")
+                    return found_matches
+            else:
+                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
+                      f"Because we have error: {self.last_error}")
+                return []
+        except TimeoutException:
+            print(f"[-] My bad, I cant found text by regex: '{regex}'")
+            self.last_error = TimeoutException
+            return []
+        except WebDriverException:
+            print("[-] Wow, error. Maybe we have low timeout?")
+            self.last_error = WebDriverException
+            return []
