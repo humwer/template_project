@@ -37,7 +37,12 @@ class WebWalker:
             print(f"[-] My bad, I don't find '{selectors}' -> button ._.")
 
     def text_of_the_element(self, selectors: tuple):
-        pass
+        try:
+            element = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+            print(f"[+] Text of the element: '{element.text}'")
+            return element.text
+        except TimeoutException:
+            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
 
     def fill_this_element(self, selectors: tuple, fill_text: str = None):
         pass
