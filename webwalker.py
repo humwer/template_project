@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
 from fake_useragent import UserAgent
 
 
@@ -26,7 +29,12 @@ class WebWalker:
             print('[-] I cant go here ><')
 
     def click_this_button(self, selectors: tuple):
-        pass
+        try:
+            button = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+            print(f"[+] Clicked button: '{button.text}'")
+            button.click()
+        except TimeoutException:
+            print(f"[-] My bad, I don't find '{selectors}' -> button ._.")
 
     def text_of_the_element(self, selectors: tuple):
         pass
