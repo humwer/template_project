@@ -12,20 +12,23 @@ def real_user(method):
     def sleeping(*args, **kwargs):
         rand_int = randrange(3, 5)
         if rand_int == 1:
-            print(f'[*] Please, wait for {rand_int} second')
+            print(f'[*] Please, wait for {rand_int} second...')
         else:
-            print(f'[*] Please, wait for {rand_int} seconds')
+            print(f'[*] Please, wait for {rand_int} seconds...')
         time.sleep(rand_int)
-        method(*args, **kwargs)
+        result = method(*args, **kwargs)
+        return result
     return sleeping
 
 
 class WebWalker:
 
-    def __init__(self, url: str):
+    def __init__(self, url: str, without_launch_browser: bool = False):
         self.url = url
         self.options = Options()
         self.options.add_argument(f'user-agent={UserAgent().random}')
+        if without_launch_browser:
+            self.options.add_argument('headless')
         self.browser = webdriver.Chrome(options=self.options)
         self.last_error = None
         self.wait_time = 10
@@ -39,7 +42,7 @@ class WebWalker:
             url = self.url
         try:
             self.browser.get(url)
-            print(f'[+] Went to: {url}')
+            print(f'[+] Surfed to: {url}')
             self.last_error = None
         except ValueError:
             print('[-] I cant go here ><')
