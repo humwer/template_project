@@ -14,10 +14,16 @@ class WebWalker:
         print("[+] Opened browser Google Chrome")
 
     def __del__(self):
-        pass
+        self.browser.quit()
 
     def go_to_url(self, url: str = None):
-        pass
+        if url is None:
+            url = self.url
+        try:
+            self.browser.get(url)
+            print(f'[+] Went to: {url}')
+        except ValueError:
+            print('[-] I cant go here ><')
 
     def click_this_button(self, selectors: tuple):
         pass
