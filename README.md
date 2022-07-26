@@ -7,4 +7,5 @@
   + can click buttons;
   + can get text from elements;
   + can set text into elements;
-  + can find text in elements by regular expressions.
+  + can find text in elements by regular expressions;
+  + can get attributes from elements.
