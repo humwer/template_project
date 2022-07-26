@@ -8,7 +8,7 @@ from random import randrange
 import time
 import re
 
-TIMEOUT = False
+TIMEOUT = True
 
 
 def real_user(do_timeout: bool = True):
@@ -58,7 +58,8 @@ class WebWalker:
     def click_this_element(self, selectors: tuple):
         try:
             if self.last_error is None:
-                button = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+                button = WebDriverWait(self.browser, self.wait_time).\
+                    until(EC.presence_of_element_located(selectors))
                 print(f"[+] Clicked element: '{button.text}'")
                 button.click()
             else:
@@ -75,24 +76,29 @@ class WebWalker:
     def text_of_this_element(self, selectors: tuple):
         try:
             if self.last_error is None:
-                element = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+                element = WebDriverWait(self.browser, self.wait_time).\
+                    until(EC.presence_of_element_located(selectors))
                 print(f"[+] Text of this element: '{element.text}'")
                 return element.text
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
+                return None
         except TimeoutException:
             print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
             self.last_error = TimeoutException
+            return None
         except WebDriverException:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
+            return None
 
     @real_user(do_timeout=TIMEOUT)
     def fill_this_element(self, selectors: tuple, fill_text: str = None):
         try:
             if self.last_error is None:
-                element = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+                element = WebDriverWait(self.browser, self.wait_time).\
+                    until(EC.presence_of_element_located(selectors))
                 element.send_keys(fill_text)
                 print(f"[+] Text '{fill_text}' in this element")
             else:
@@ -109,13 +115,15 @@ class WebWalker:
     def find_text_in_this_element_by_regex(self, selectors: tuple, regex: str):
         try:
             if self.last_error is None:
-                element = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+                element = WebDriverWait(self.browser, self.wait_time).\
+                    until(EC.presence_of_element_located(selectors))
                 found_matches = re.findall(regex, element.text)
                 if len(found_matches) == 0:
                     print(f"[-] Not found matches in this element by regex: '{regex}'")
                     return found_matches
                 else:
-                    print(f"[+] Found matches: {len(found_matches)} in this element by regex: '{regex}'")
+                    print(f"[+] Found matches: {len(found_matches)} "
+                          f"in this element by regex: '{regex}'")
                     return found_matches
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -134,18 +142,22 @@ class WebWalker:
     def get_attribute_of_element(self, selectors: tuple, name_attribute: str):
         try:
             if self.last_error is None:
-                element = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
+                element = WebDriverWait(self.browser, self.wait_time).\
+                    until(EC.presence_of_element_located(selectors))
                 print(f"[+] Attribute of this element: '{element.get_attribute(name_attribute)}'")
                 return element.get_attribute(name_attribute)
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
+                return None
         except TimeoutException:
             print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
             self.last_error = TimeoutException
+            return None
         except WebDriverException:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
+            return None
 
     def get_current_url(self):
         try:
@@ -153,5 +165,5 @@ class WebWalker:
             print(f'[+] Now url: {url}')
             return url
         except WebDriverException:
-            print(f'[-] My bad, I cant get url ><')
+            print('[-] My bad, I cant get url ><')
             return None
