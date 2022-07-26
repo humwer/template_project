@@ -8,18 +8,23 @@ from random import randrange
 import time
 import re
 
+TIMEOUT = True
 
-def real_user(method):
-    def sleeping(*args, **kwargs):
-        rand_int = randrange(3, 5)
-        if rand_int == 1:
-            print(f'[*] Please, wait for {rand_int} second...')
-        else:
-            print(f'[*] Please, wait for {rand_int} seconds...')
-        time.sleep(rand_int)
-        result = method(*args, **kwargs)
-        return result
-    return sleeping
+
+def real_user(do_timeout: bool = True):
+    def _real_user(method):
+        def sleeping(*args, **kwargs):
+            if do_timeout:
+                rand_int = randrange(3, 5)
+                if rand_int == 1:
+                    print(f'[*] Please, wait for {rand_int} second...')
+                else:
+                    print(f'[*] Please, wait for {rand_int} seconds...')
+                time.sleep(rand_int)
+            result = method(*args, **kwargs)
+            return result
+        return sleeping
+    return _real_user
 
 
 class WebWalker:
@@ -49,7 +54,7 @@ class WebWalker:
             print('[-] I cant go here ><')
             self.last_error = ValueError
 
-    @real_user
+    @real_user(do_timeout=TIMEOUT)
     def click_this_button(self, selectors: tuple):
         try:
             if self.last_error is None:
@@ -66,7 +71,7 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
 
-    @real_user
+    @real_user(do_timeout=TIMEOUT)
     def text_of_the_element(self, selectors: tuple):
         try:
             if self.last_error is None:
@@ -83,7 +88,7 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
 
-    @real_user
+    @real_user(do_timeout=TIMEOUT)
     def fill_this_element(self, selectors: tuple, fill_text: str = None):
         try:
             if self.last_error is None:
@@ -100,7 +105,7 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
 
-    @real_user
+    @real_user(do_timeout=TIMEOUT)
     def find_text_in_element_by_regex(self, selectors: tuple, regex: str):
         try:
             if self.last_error is None:
