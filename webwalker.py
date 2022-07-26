@@ -59,13 +59,13 @@ class WebWalker:
         try:
             if self.last_error is None:
                 button = WebDriverWait(self.browser, self.wait_time).until(EC.presence_of_element_located(selectors))
-                print(f"[+] Clicked button: '{button.text}'")
+                print(f"[+] Clicked element: '{button.text}'")
                 button.click()
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
         except TimeoutException:
-            print(f"[-] My bad, I don't find '{selectors}' -> button ._.")
+            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
             self.last_error = TimeoutException
         except WebDriverException:
             print("[-] Wow, error. Maybe we have low timeout?")
