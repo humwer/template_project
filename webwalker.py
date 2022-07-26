@@ -124,3 +124,12 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
             return []
+
+    def get_current_url(self):
+        try:
+            url = self.browser.current_url
+            print(f'[+] Now url: {url}')
+            return url
+        except WebDriverException:
+            print(f'[-] My bad, I cant get url ><')
+            return None
