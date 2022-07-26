@@ -10,8 +10,8 @@ def test_guest_surfed_on_site(walker):
 def test_guest_can_go_to_catalog(walker):
     walker.go_to_url()
     walker.click_this_element(TestSite.BUTTON_GO_TO_CATALOG)
-    assert walker.text_of_this_element(TestSite.IS_CATALOG) == 'Women', "[-] It's not 'Women-page'"
-    print("[+] Success. We surfed to women-page from main page.")
+    assert walker.text_of_this_element(TestSite.IS_CATALOG) == 'Women', "[-] It's not 'Catalog'"
+    print("[+] Success. We surfed to catalog from main page.")
 
 
 class TestCatalog:
