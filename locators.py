@@ -7,6 +7,6 @@ class TestSite:
     IS_CATALOG = (By.CSS_SELECTOR, ".navigation_page")
     CATEGORY_TOPS = (By.CSS_SELECTOR, "#layered_category_4")
     CATEGORY_DRESSES = (By.CSS_SELECTOR, "#layered_category_8")
-    SELECTED_CATEGORIES = (By.CSS_SELECTOR, ".cat-name")
+    STORE_INFORMATION = (By.CSS_SELECTOR, "#block_contact_infos")
 
 
