@@ -30,3 +30,11 @@ class TestCatalog:
         assert walker.get_attribute_of_element(TestSite.CATEGORY_DRESSES, 'checked') is None, \
             "[-] Checkbox 'Dresses' is checked"
         print("[+] Checkbox 'Dresses' isnt checked")
+
+    def test_guest_sees_store_information(self, walker):
+        walker.go_to_url()
+        walker.click_this_element(TestSite.BUTTON_GO_TO_CATALOG)
+        found_matches = walker.find_text_in_this_element_by_regex(TestSite.STORE_INFORMATION,
+                                                                  r'[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}')
+        assert found_matches[0] == '(347) 466-7432', "[-] Not found phone number of store"
+        print('[+] Found phone number of store')
