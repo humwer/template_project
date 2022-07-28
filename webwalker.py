@@ -40,9 +40,6 @@ class WebWalker:
         self.wait_time = 10
         print("[+] Opened browser Google Chrome")
 
-    def __del__(self):
-        self.browser.quit()
-
     def go_to_url(self, url: str = None):
         if url is None:
             url = self.url
