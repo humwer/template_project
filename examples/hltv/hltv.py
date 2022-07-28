@@ -6,4 +6,11 @@ class HLTVWalker(WebWalker):
 
     def actual_date(self):
         date: str = self.text_of_this_element(HLTVLocators.RATING)
-        return date.split('on')[1].strip()
+        if date is None:
+            return False
+        else:
+            return date.split('on')[1].strip()
+
+    def skip_cookies(self):
+        self.click_this_element(HLTVLocators.COOKIES_BUTTON)
+
