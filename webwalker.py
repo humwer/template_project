@@ -129,6 +129,33 @@ class WebWalker:
             return None
 
     @real_user(do_timeout=TIMEOUT)
+    def get_element(self, selectors: tuple, some_elements: bool = False):
+        try:
+            WebDriverWait(self.browser, self.wait_time). \
+                until(EC.presence_of_element_located(selectors))
+            if self.last_error is None:
+                if not some_elements:
+                    element = self.browser.find_element(*selectors)
+                    print(f"[+] Element by '{selectors}'")
+                    return element
+                else:
+                    elements = self.browser.find_elements(*selectors)
+                    print(f"[+] Elements: '{selectors}'")
+                    return elements
+            else:
+                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
+                      f"Because we have error: {self.last_error}")
+                return None
+        except TimeoutException:
+            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
+            self.last_error = TimeoutException
+            return None
+        except WebDriverException:
+            print("[-] Wow, error. Maybe we have low timeout?")
+            self.last_error = WebDriverException
+            return None
+
+    @real_user(do_timeout=TIMEOUT)
     def fill_this_element(self, selectors: tuple, fill_text: str = None):
         try:
             if self.last_error is None:
