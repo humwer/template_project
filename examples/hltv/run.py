@@ -9,3 +9,5 @@ if __name__ == '__main__':
     rating_actual_date = walker.actual_date()
     teams_name = walker.get_team_names()
     teams_points = walker.get_points_teams()
+    teams_players = walker.get_team_players()
+

@@ -27,3 +27,16 @@ class HLTVWalker(WebWalker):
             return False
         else:
             return points
+
+    def get_team_players(self):
+        self.click_this_element(HLTVLocators.TEAM_PLAYERS)
+        elements: list = self.get_element(HLTVLocators.TEAM_PLAYERS, True)
+        if elements is None:
+            return False
+        team_players: list = []
+        for players in elements:
+            team_players.append([player.text for player in players.find_elements(*HLTVLocators.PLAYER)])
+        if team_players is None:
+            return False
+        else:
+            return team_players
