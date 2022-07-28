@@ -29,23 +29,26 @@ def real_user(do_timeout: bool = True):
 
 class WebWalker:
 
-    def __init__(self, url: str, without_launch_browser: bool = False):
+    def __init__(self, url: str, option_launch_browser: bool = False, option_debug: bool = False):
         self.url = url
         self.options = Options()
         self.options.add_argument(f'user-agent={UserAgent().random}')
-        if without_launch_browser:
+        if option_launch_browser:
             self.options.add_argument('headless')
         self.browser = webdriver.Chrome(options=self.options)
         self.last_error = None
         self.wait_time = 10
-        print("[+] Opened browser Google Chrome")
+        self.debug = option_debug
+        if self.debug:
+            print("[+] Opened browser Google Chrome")
 
     def go_to_url(self, url: str = None):
         if url is None:
             url = self.url
         try:
             self.browser.get(url)
-            print(f'[+] Surfed to: {url}')
+            if self.debug:
+                print(f'[+] Surfed to: {url}')
             self.last_error = None
         except ValueError:
             print('[-] I cant go here ><')
@@ -57,7 +60,8 @@ class WebWalker:
             if self.last_error is None:
                 button = WebDriverWait(self.browser, self.wait_time).\
                     until(EC.presence_of_element_located(selectors))
-                print(f"[+] Clicked element: '{button.text}'")
+                if self.debug:
+                    print(f"[+] Clicked element: '{button.text}'")
                 button.click()
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -77,12 +81,14 @@ class WebWalker:
                     until(EC.presence_of_element_located(selectors))
                 if not some_elements:
                     element = self.browser.find_element(*selectors)
-                    print(f"[+] Text of this element: '{element.text}'")
+                    if self.debug:
+                        print(f"[+] Text of this element: '{element.text}'")
                     return element.text
                 else:
                     elements = self.browser.find_elements(*selectors)
                     text_elements = [element.text for element in elements]
-                    print(f"[+] Text of this elements: {text_elements}")
+                    if self.debug:
+                        print(f"[+] Text of this elements: {text_elements}")
                     return text_elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -105,12 +111,14 @@ class WebWalker:
             if self.last_error is None:
                 if not some_elements:
                     element = self.browser.find_element(*selectors)
-                    print(f"[+] Attribute of this element: '{element.get_attribute(name_attribute)}'")
+                    if self.debug:
+                        print(f"[+] Attribute of this element: '{element.get_attribute(name_attribute)}'")
                     return element.get_attribute(name_attribute)
                 else:
                     elements = self.browser.find_elements(*selectors)
                     attr_elements = [element.get_attribute(name_attribute) for element in elements]
-                    print(f"[+] Attribute of this elements: '{attr_elements}'")
+                    if self.debug:
+                        print(f"[+] Attribute of this elements: '{attr_elements}'")
                     return attr_elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -133,11 +141,13 @@ class WebWalker:
             if self.last_error is None:
                 if not some_elements:
                     element = self.browser.find_element(*selectors)
-                    print(f"[+] Element by '{selectors}'")
+                    if self.debug:
+                        print(f"[+] Element by '{selectors}'")
                     return element
                 else:
                     elements = self.browser.find_elements(*selectors)
-                    print(f"[+] Elements: '{selectors}'")
+                    if self.debug:
+                        print(f"[+] Elements: '{selectors}'")
                     return elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -159,7 +169,8 @@ class WebWalker:
                 element = WebDriverWait(self.browser, self.wait_time).\
                     until(EC.presence_of_element_located(selectors))
                 element.send_keys(fill_text)
-                print(f"[+] Text '{fill_text}' in this element")
+                if self.debug:
+                    print(f"[+] Text '{fill_text}' in this element")
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
@@ -181,8 +192,9 @@ class WebWalker:
                     print(f"[-] Not found matches in this element by regex: '{regex}'")
                     return found_matches
                 else:
-                    print(f"[+] Found matches: {len(found_matches)} "
-                          f"in this element by regex: '{regex}'")
+                    if self.debug:
+                        print(f"[+] Found matches: {len(found_matches)} "
+                              f"in this element by regex: '{regex}'")
                     return found_matches
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -200,7 +212,8 @@ class WebWalker:
     def get_current_url(self):
         try:
             url = self.browser.current_url
-            print(f'[+] Now url: {url}')
+            if self.debug:
+                print(f'[+] Now url: {url}')
             return url
         except WebDriverException:
             print('[-] My bad, I cant get url ><')
