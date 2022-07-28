@@ -7,3 +7,5 @@ class HLTVLocators:
     RATING = (By.CSS_SELECTOR, ".regional-ranking-header")
     TEAM_NAME = (By.CSS_SELECTOR, ".teamLine > .name")
     TEAM_POINTS = (By.CSS_SELECTOR, ".teamLine > .points")
+    TEAM_PLAYERS = (By.CSS_SELECTOR, ".playersLine")
+    PLAYER = (By.CSS_SELECTOR, ".rankingNicknames > span")
