@@ -16,13 +16,14 @@ def real_user(do_delay: bool = True):
     """Decorator used for imitation delay of acts of user"""
     def _real_user(method):
         def sleeping(*args, **kwargs):
-            if do_delay:
-                rand_int = randrange(3, 5)
-                if rand_int == 1:
-                    print(f'[*] Please, wait for {rand_int} second...')
-                else:
-                    print(f'[*] Please, wait for {rand_int} seconds...')
-                time.sleep(rand_int)
+            if not any(isinstance(param, WebElement) for param in args):
+                if do_delay:
+                    rand_int = randrange(3, 5)
+                    if rand_int == 1:
+                        print(f'[*] Please, wait for {rand_int} second...')
+                    else:
+                        print(f'[*] Please, wait for {rand_int} seconds...')
+                    time.sleep(rand_int)
             result = method(*args, **kwargs)
             return result
         return sleeping
