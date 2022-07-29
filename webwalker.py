@@ -8,13 +8,14 @@ from random import randrange
 import time
 import re
 
-TIMEOUT = True
+DELAY = True
 
 
-def real_user(do_timeout: bool = True):
+def real_user(do_delay: bool = True):
+    """Decorator used for imitation delay of acts of user"""
     def _real_user(method):
         def sleeping(*args, **kwargs):
-            if do_timeout:
+            if do_delay:
                 rand_int = randrange(3, 5)
                 if rand_int == 1:
                     print(f'[*] Please, wait for {rand_int} second...')
@@ -30,6 +31,14 @@ def real_user(do_timeout: bool = True):
 class WebWalker:
 
     def __init__(self, url: str, option_launch_browser: bool = False, option_debug: bool = False):
+        """Support class used for creation new classes of parsers\n
+        Parameters:
+            url: link to website, e.g. https:\\example.com
+            option_launch_browser: option of launch browser.
+                If you want launch - True. Unless you want - False.
+            option_debug: Option of debugging (only for success-messages).
+                If you want print messages - True. Unless you want - False.
+        """
         self.url = url
         self.options = Options()
         self.options.add_argument(f'user-agent={UserAgent().random}')
@@ -42,7 +51,22 @@ class WebWalker:
         if self.debug:
             print("[+] Opened browser Google Chrome")
 
+    def get_current_url(self):
+        """Returns url of active tab or None if raise error"""
+        try:
+            url = self.browser.current_url
+            if self.debug:
+                print(f'[+] Now url: {url}')
+            return url
+        except WebDriverException:
+            print('[-] My bad, I cant get url ><')
+            return None
+
     def go_to_url(self, url: str = None):
+        """Surf to specified link or link in class-object\n
+        Parameters:
+            url: link to website, e.g. https:\\example.com
+        """
         if url is None:
             url = self.url
         try:
@@ -54,8 +78,12 @@ class WebWalker:
             print('[-] I cant go here ><')
             self.last_error = ValueError
 
-    @real_user(do_timeout=TIMEOUT)
+    @real_user(do_delay=DELAY)
     def click_this_element(self, selectors: tuple):
+        """Click by specified element of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+        """
         try:
             if self.last_error is None:
                 button = WebDriverWait(self.browser, self.wait_time).\
@@ -73,8 +101,17 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
 
-    @real_user(do_timeout=TIMEOUT)
+    @real_user(do_delay=DELAY)
     def text_of_this_element(self, selectors: tuple, some_elements: bool = False):
+        """Get text from elements of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            some_elements: look for one element - False, look for some elements - True
+        Returns:
+            text
+             OR list with texts
+             OR None (if error)
+        """
         try:
             if self.last_error is None:
                 WebDriverWait(self.browser, self.wait_time). \
@@ -103,8 +140,18 @@ class WebWalker:
             self.last_error = WebDriverException
             return None
 
-    @real_user(do_timeout=TIMEOUT)
+    @real_user(do_delay=DELAY)
     def get_attribute_of_element(self, selectors: tuple, name_attribute: str, some_elements: bool = False):
+        """Get attributes from elements of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            name_attribute: name of attribute, e.g. 'class', 'data-qa', 'href'
+            some_elements: look for one element - False, look for some elements - True
+        Returns:
+            value of attribute
+             OR list with values of attributes
+             OR None (if error)
+        """
         try:
             WebDriverWait(self.browser, self.wait_time). \
                 until(EC.presence_of_element_located(selectors))
@@ -133,8 +180,17 @@ class WebWalker:
             self.last_error = WebDriverException
             return None
 
-    @real_user(do_timeout=TIMEOUT)
+    @real_user(do_delay=DELAY)
     def get_element(self, selectors: tuple, some_elements: bool = False):
+        """Get elements of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            some_elements: look for one element - False, look for some elements - True
+        Returns:
+            element
+             OR list with elements
+             OR None (if error)
+        """
         try:
             WebDriverWait(self.browser, self.wait_time). \
                 until(EC.presence_of_element_located(selectors))
@@ -162,8 +218,13 @@ class WebWalker:
             self.last_error = WebDriverException
             return None
 
-    @real_user(do_timeout=TIMEOUT)
+    @real_user(do_delay=DELAY)
     def fill_this_element(self, selectors: tuple, fill_text: str = None):
+        """Fill specified element of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            fill_text: data for filling
+        """
         try:
             if self.last_error is None:
                 element = WebDriverWait(self.browser, self.wait_time).\
@@ -181,8 +242,16 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
 
-    @real_user(do_timeout=TIMEOUT)
+    @real_user(do_delay=DELAY)
     def find_text_in_this_element_by_regex(self, selectors: tuple, regex: str):
+        """Get text by regex from elements of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            regex: regular expression should be raw-string, e.g. r'[0-9]{1,3}', r'[A-Za-z]' and etc.
+        Returns:
+            text
+             OR None (if error)
+        """
         try:
             if self.last_error is None:
                 element = WebDriverWait(self.browser, self.wait_time).\
@@ -208,13 +277,3 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
             return []
-
-    def get_current_url(self):
-        try:
-            url = self.browser.current_url
-            if self.debug:
-                print(f'[+] Now url: {url}')
-            return url
-        except WebDriverException:
-            print('[-] My bad, I cant get url ><')
-            return None
