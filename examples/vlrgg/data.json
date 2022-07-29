@@ -1,0 +1,796 @@
+{
+    "EUROPE": [
+        {
+            "FunPlus Phoenix": {
+                "Place": 1,
+                "Country": "Europe",
+                "Score": 2400
+            }
+        },
+        {
+            "FNATIC": {
+                "Place": 2,
+                "Country": "Europe",
+                "Score": 2167
+            }
+        },
+        {
+            "Guild Esports": {
+                "Place": 3,
+                "Country": "Europe",
+                "Score": 1870
+            }
+        },
+        {
+            "Acend": {
+                "Place": 4,
+                "Country": "Europe",
+                "Score": 1830
+            }
+        },
+        {
+            "Team Liquid": {
+                "Place": 5,
+                "Country": "Europe",
+                "Score": 1821
+            }
+        },
+        {
+            "M3 Champions": {
+                "Place": 6,
+                "Country": "Russia",
+                "Score": 1807
+            }
+        },
+        {
+            "G2 Esports": {
+                "Place": 7,
+                "Country": "Europe",
+                "Score": 1716
+            }
+        },
+        {
+            "EXCEL": {
+                "Place": 8,
+                "Country": "Europe",
+                "Score": 1669
+            }
+        },
+        {
+            "Natus Vincere": {
+                "Place": 9,
+                "Country": "Russia",
+                "Score": 1665
+            }
+        },
+        {
+            "MAD Lions": {
+                "Place": 10,
+                "Country": "Europe",
+                "Score": 1650
+            }
+        }
+    ],
+    "NORTH AMERICA": [
+        {
+            "OpTic Gaming": {
+                "Place": 1,
+                "Country": "United States",
+                "Score": 2400
+            }
+        },
+        {
+            "XSET": {
+                "Place": 2,
+                "Country": "United States",
+                "Score": 2255
+            }
+        },
+        {
+            "FaZe Clan": {
+                "Place": 3,
+                "Country": "United States",
+                "Score": 1989
+            }
+        },
+        {
+            "NRG Esports": {
+                "Place": 4,
+                "Country": "United States",
+                "Score": 1941
+            }
+        },
+        {
+            "Cloud9": {
+                "Place": 5,
+                "Country": "United States",
+                "Score": 1895
+            }
+        },
+        {
+            "Evil Geniuses": {
+                "Place": 6,
+                "Country": "United States",
+                "Score": 1879
+            }
+        },
+        {
+            "Ghost Gaming": {
+                "Place": 7,
+                "Country": "United States",
+                "Score": 1858
+            }
+        },
+        {
+            "Shopify Rebellion": {
+                "Place": 8,
+                "Country": "United States",
+                "Score": 1856
+            }
+        },
+        {
+            "100 Thieves": {
+                "Place": 9,
+                "Country": "United States",
+                "Score": 1851
+            }
+        },
+        {
+            "Version1": {
+                "Place": 10,
+                "Country": "Canada",
+                "Score": 1831
+            }
+        }
+    ],
+    "BRAZIL": [
+        {
+            "LOUD": {
+                "Place": 1,
+                "Country": "Brazil",
+                "Score": 2400
+            }
+        },
+        {
+            "Ninjas In Pyjamas": {
+                "Place": 2,
+                "Country": "Brazil",
+                "Score": 1866
+            }
+        },
+        {
+            "Keyd Stars": {
+                "Place": 3,
+                "Country": "Brazil",
+                "Score": 1834
+            }
+        },
+        {
+            "FURIA": {
+                "Place": 4,
+                "Country": "Brazil",
+                "Score": 1746
+            }
+        },
+        {
+            "Los Grandes": {
+                "Place": 5,
+                "Country": "Brazil",
+                "Score": 1725
+            }
+        },
+        {
+            "DELIRA": {
+                "Place": 6,
+                "Country": "Brazil",
+                "Score": 1696
+            }
+        },
+        {
+            "Unemployed": {
+                "Place": 7,
+                "Country": "Brazil",
+                "Score": 1696
+            }
+        },
+        {
+            "The Union": {
+                "Place": 8,
+                "Country": "Brazil",
+                "Score": 1670
+            }
+        },
+        {
+            "MIBR": {
+                "Place": 9,
+                "Country": "Brazil",
+                "Score": 1646
+            }
+        },
+        {
+            "Rise Gaming": {
+                "Place": 10,
+                "Country": "Brazil",
+                "Score": 1642
+            }
+        }
+    ],
+    "ASIA-PACIFIC": [
+        {
+            "Paper Rex": {
+                "Place": 1,
+                "Country": "Singapore",
+                "Score": 2400
+            }
+        },
+        {
+            "XERXIA Esports": {
+                "Place": 2,
+                "Country": "Thailand",
+                "Score": 1853
+            }
+        },
+        {
+            "ONIC G": {
+                "Place": 3,
+                "Country": "Indonesia",
+                "Score": 1762
+            }
+        },
+        {
+            "BOOM Esports": {
+                "Place": 4,
+                "Country": "Indonesia",
+                "Score": 1711
+            }
+        },
+        {
+            "Team Secret": {
+                "Place": 5,
+                "Country": "Philippines",
+                "Score": 1703
+            }
+        },
+        {
+            "Alter Ego": {
+                "Place": 6,
+                "Country": "Indonesia",
+                "Score": 1692
+            }
+        },
+        {
+            "Velocity Gaming": {
+                "Place": 7,
+                "Country": "India",
+                "Score": 1662
+            }
+        },
+        {
+            "BLEED": {
+                "Place": 8,
+                "Country": "Singapore",
+                "Score": 1655
+            }
+        },
+        {
+            "FULL SENSE": {
+                "Place": 9,
+                "Country": "Thailand",
+                "Score": 1648
+            }
+        },
+        {
+            "Enigma Gaming": {
+                "Place": 10,
+                "Country": "India",
+                "Score": 1646
+            }
+        }
+    ],
+    "KOREA": [
+        {
+            "DRX": {
+                "Place": 1,
+                "Country": "South Korea",
+                "Score": 2000
+            }
+        },
+        {
+            "DAMWON Gaming": {
+                "Place": 2,
+                "Country": "South Korea",
+                "Score": 1717
+            }
+        },
+        {
+            "On Sla2ers": {
+                "Place": 3,
+                "Country": "South Korea",
+                "Score": 1663
+            }
+        },
+        {
+            "Maru Gaming": {
+                "Place": 4,
+                "Country": "South Korea",
+                "Score": 1627
+            }
+        },
+        {
+            "World Game Star": {
+                "Place": 5,
+                "Country": "South Korea",
+                "Score": 1595
+            }
+        },
+        {
+            "Desperado": {
+                "Place": 6,
+                "Country": "South Korea",
+                "Score": 1528
+            }
+        },
+        {
+            "CNJ esports": {
+                "Place": 7,
+                "Country": "South Korea",
+                "Score": 1491
+            }
+        },
+        {
+            "Team T5": {
+                "Place": 8,
+                "Country": "South Korea",
+                "Score": 1475
+            }
+        }
+    ],
+    "CHINA": [
+        {
+            "EDward Gaming": {
+                "Place": 1,
+                "Country": "China",
+                "Score": 2000
+            }
+        },
+        {
+            "KONE eSC": {
+                "Place": 2,
+                "Country": "China",
+                "Score": 1887
+            }
+        },
+        {
+            "FunPlus Phoenix ZHUQUE": {
+                "Place": 3,
+                "Country": "China",
+                "Score": 1798
+            }
+        },
+        {
+            "Weibo Gaming": {
+                "Place": 4,
+                "Country": "China",
+                "Score": 1740
+            }
+        },
+        {
+            "Tales of Eastern": {
+                "Place": 5,
+                "Country": "China",
+                "Score": 1701
+            }
+        },
+        {
+            "Night Wings Gaming": {
+                "Place": 6,
+                "Country": "China",
+                "Score": 1670
+            }
+        },
+        {
+            "NTER": {
+                "Place": 7,
+                "Country": "China",
+                "Score": 1664
+            }
+        },
+        {
+            "ME": {
+                "Place": 8,
+                "Country": "China",
+                "Score": 1587
+            }
+        },
+        {
+            "Number One Player": {
+                "Place": 9,
+                "Country": "China",
+                "Score": 1543
+            }
+        },
+        {
+            "TYLOO": {
+                "Place": 10,
+                "Country": "China",
+                "Score": 1536
+            }
+        }
+    ],
+    "JAPAN": [
+        {
+            "ZETA DIVISION": {
+                "Place": 1,
+                "Country": "Japan",
+                "Score": 2400
+            }
+        },
+        {
+            "NORTHEPTION": {
+                "Place": 2,
+                "Country": "Japan",
+                "Score": 2221
+            }
+        },
+        {
+            "Crazy Raccoon": {
+                "Place": 3,
+                "Country": "Japan",
+                "Score": 1771
+            }
+        },
+        {
+            "REJECT": {
+                "Place": 4,
+                "Country": "Japan",
+                "Score": 1709
+            }
+        },
+        {
+            "SCARZ": {
+                "Place": 5,
+                "Country": "Japan",
+                "Score": 1702
+            }
+        },
+        {
+            "FAV gaming": {
+                "Place": 6,
+                "Country": "Japan",
+                "Score": 1702
+            }
+        },
+        {
+            "FIRST Gaming": {
+                "Place": 7,
+                "Country": "Japan",
+                "Score": 1691
+            }
+        },
+        {
+            "BLUE BEES.ESP": {
+                "Place": 8,
+                "Country": "Japan",
+                "Score": 1689
+            }
+        },
+        {
+            "IGZIST": {
+                "Place": 9,
+                "Country": "Japan",
+                "Score": 1686
+            }
+        },
+        {
+            "CLAUDIO.EXE": {
+                "Place": 10,
+                "Country": "Japan",
+                "Score": 1662
+            }
+        }
+    ],
+    "LA-S": [
+        {
+            "Leviatán": {
+                "Place": 1,
+                "Country": "Chile",
+                "Score": 2363
+            }
+        },
+        {
+            "KRÜ Esports": {
+                "Place": 2,
+                "Country": "Chile",
+                "Score": 2207
+            }
+        },
+        {
+            "9z Team": {
+                "Place": 3,
+                "Country": "Argentina",
+                "Score": 1652
+            }
+        },
+        {
+            "Movistar Optix": {
+                "Place": 4,
+                "Country": "Chile",
+                "Score": 1598
+            }
+        },
+        {
+            "EBRO Gaming": {
+                "Place": 5,
+                "Country": "Argentina",
+                "Score": 1580
+            }
+        },
+        {
+            "SunXet Club": {
+                "Place": 6,
+                "Country": "Chile",
+                "Score": 1567
+            }
+        }
+    ],
+    "LA-N": [
+        {
+            "E-Xolos LAZER": {
+                "Place": 1,
+                "Country": "Colombia",
+                "Score": 2000
+            }
+        },
+        {
+            "FUSION": {
+                "Place": 2,
+                "Country": "Colombia",
+                "Score": 1934
+            }
+        },
+        {
+            "Akave Esports": {
+                "Place": 3,
+                "Country": "Mexico",
+                "Score": 1790
+            }
+        },
+        {
+            "Infinity Esports": {
+                "Place": 4,
+                "Country": "Chile",
+                "Score": 1777
+            }
+        },
+        {
+            "Six Karma": {
+                "Place": 5,
+                "Country": "Colombia",
+                "Score": 1772
+            }
+        },
+        {
+            "Border Monsters": {
+                "Place": 6,
+                "Country": "Colombia",
+                "Score": 1711
+            }
+        }
+    ],
+    "OCEANIA": [
+        {
+            "ORDER": {
+                "Place": 1,
+                "Country": "Australia",
+                "Score": 2139
+            }
+        },
+        {
+            "BOBO": {
+                "Place": 2,
+                "Country": "Australia",
+                "Score": 2053
+            }
+        },
+        {
+            "HONEY BADGERS": {
+                "Place": 3,
+                "Country": "Australia",
+                "Score": 2020
+            }
+        },
+        {
+            "WithYouWithMe": {
+                "Place": 4,
+                "Country": "Australia",
+                "Score": 1893
+            }
+        },
+        {
+            "Bonkers": {
+                "Place": 5,
+                "Country": "Australia",
+                "Score": 1856
+            }
+        },
+        {
+            "Funcrew": {
+                "Place": 6,
+                "Country": "Australia",
+                "Score": 1801
+            }
+        },
+        {
+            "REIGN": {
+                "Place": 7,
+                "Country": "Australia",
+                "Score": 1657
+            }
+        },
+        {
+            "SamPhamFanClub": {
+                "Place": 8,
+                "Country": "Australia",
+                "Score": 1641
+            }
+        },
+        {
+            "Mindfreak": {
+                "Place": 9,
+                "Country": "Australia",
+                "Score": 1614
+            }
+        },
+        {
+            "Trident Esports": {
+                "Place": 10,
+                "Country": "Australia",
+                "Score": 1557
+            }
+        }
+    ],
+    "MENA": [
+        {
+            "Team Falcons": {
+                "Place": 1,
+                "Country": "Saudi Arabia",
+                "Score": 2000
+            }
+        },
+        {
+            "XPLDZ": {
+                "Place": 2,
+                "Country": "Egypt",
+                "Score": 1972
+            }
+        },
+        {
+            "Team RA'AD": {
+                "Place": 3,
+                "Country": "Egypt",
+                "Score": 1947
+            }
+        },
+        {
+            "Geekay Esports": {
+                "Place": 4,
+                "Country": "United Arab Emirates",
+                "Score": 1879
+            }
+        },
+        {
+            "MLC Esports": {
+                "Place": 5,
+                "Country": "Morocco",
+                "Score": 1868
+            }
+        },
+        {
+            "Team Duelist": {
+                "Place": 6,
+                "Country": "United Arab Emirates",
+                "Score": 1818
+            }
+        },
+        {
+            "vSlash Esports": {
+                "Place": 7,
+                "Country": "United Arab Emirates",
+                "Score": 1816
+            }
+        },
+        {
+            "01 Esports": {
+                "Place": 8,
+                "Country": "Saudi Arabia",
+                "Score": 1809
+            }
+        },
+        {
+            "NASR Esports": {
+                "Place": 9,
+                "Country": "Jordan",
+                "Score": 1778
+            }
+        },
+        {
+            "YaLLa Esports": {
+                "Place": 10,
+                "Country": "United Arab Emirates",
+                "Score": 1774
+            }
+        }
+    ],
+    "GC": [
+        {
+            "Cloud9 White": {
+                "Place": 1,
+                "Country": "United States",
+                "Score": 2000
+            }
+        },
+        {
+            "G2 Gozen": {
+                "Place": 2,
+                "Country": "Europe",
+                "Score": 1990
+            }
+        },
+        {
+            "Team Liquid Brazil": {
+                "Place": 3,
+                "Country": "Brazil",
+                "Score": 1921
+            }
+        },
+        {
+            "Alter Ego Celestè": {
+                "Place": 4,
+                "Country": "Indonesia",
+                "Score": 1921
+            }
+        },
+        {
+            "Shopify Rebellion GC": {
+                "Place": 5,
+                "Country": "United States",
+                "Score": 1878
+            }
+        },
+        {
+            "Guild X": {
+                "Place": 6,
+                "Country": "Europe",
+                "Score": 1874
+            }
+        },
+        {
+            "TENSTAR Nova": {
+                "Place": 7,
+                "Country": "France",
+                "Score": 1817
+            }
+        },
+        {
+            "TSM X": {
+                "Place": 8,
+                "Country": "Canada",
+                "Score": 1791
+            }
+        },
+        {
+            "Dignitas": {
+                "Place": 9,
+                "Country": "United States",
+                "Score": 1787
+            }
+        },
+        {
+            "Acend Rising": {
+                "Place": 10,
+                "Country": "Europe",
+                "Score": 1751
+            }
+        }
+    ]
+}
