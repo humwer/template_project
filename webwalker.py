@@ -123,7 +123,7 @@ class WebWalker:
                     return element.text
                 else:
                     if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element isn't WebElement!")
+                        print(f"[-] Target element: {selectors} isn't WebElement!")
                         return None
                     element = target_element.find_element(*selectors)
                     if self.debug:
@@ -160,13 +160,16 @@ class WebWalker:
                     elements = self.browser.find_elements(*selectors)
                     text_elements = [element.text for element in elements]
                     if self.debug:
-                        print(f"[+] Text of this elements: {text_elements}")
+                        print(f"[+] Text of elements {selectors}: {text_elements}")
                     return text_elements
                 else:
+                    if not isinstance(target_element, WebElement):
+                        print(f"[-] Target element: {selectors} isn't WebElement!")
+                        return None
                     elements = target_element.find_elements(*selectors)
                     text_elements = [element.text for element in elements]
                     if self.debug:
-                        print(f"[+] Text of this elements: {text_elements}")
+                        print(f"[+] Text of elements {selectors}: {text_elements}")
                     return text_elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -199,15 +202,15 @@ class WebWalker:
                 if target_element is None:
                     element = self.browser.find_element(*selectors)
                     if self.debug:
-                        print(f"[+] Attribute of this element: '{element.get_attribute(name_attribute)}'")
+                        print(f"[+] Attribute of element {selectors}: '{element.get_attribute(name_attribute)}'")
                     return element.get_attribute(name_attribute)
                 else:
                     if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element isn't WebElement!")
+                        print(f"[-] Target element: {selectors} isn't WebElement!")
                         return None
                     element = target_element.find_element(*selectors)
                     if self.debug:
-                        print(f"[+] Attribute of this element: '{element.get_attribute(name_attribute)}'")
+                        print(f"[+] Attribute of element {selectors}: '{element.get_attribute(name_attribute)}'")
                     return element.get_attribute(name_attribute)
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -241,13 +244,16 @@ class WebWalker:
                     elements = self.browser.find_elements(*selectors)
                     attr_elements = [element.get_attribute(name_attribute) for element in elements]
                     if self.debug:
-                        print(f"[+] Attribute of this elements: '{attr_elements}'")
+                        print(f"[+] Attribute of elements {selectors}: '{attr_elements}'")
                     return attr_elements
                 else:
+                    if not isinstance(target_element, WebElement):
+                        print(f"[-] Target element: {selectors} isn't WebElement!")
+                        return None
                     elements = target_element.find_elements(*selectors)
                     attr_elements = [element.get_attribute(name_attribute) for element in elements]
                     if self.debug:
-                        print(f"[+] Attribute of this elements: '{attr_elements}'")
+                        print(f"[+] Attribute of elements {selectors}: '{attr_elements}'")
                     return attr_elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -283,7 +289,7 @@ class WebWalker:
                     return element
                 else:
                     if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element isn't WebElement!")
+                        print(f"[-] Target element: {selectors} isn't WebElement!")
                         return None
                     element = target_element.find_element(*selectors)
                     if self.debug:
@@ -319,12 +325,15 @@ class WebWalker:
                         until(EC.presence_of_element_located(selectors))
                     elements = self.browser.find_elements(*selectors)
                     if self.debug:
-                        print(f"[+] Elements: '{selectors}'")
+                        print(f"[+] Elements by '{selectors}'")
                     return elements
                 else:
+                    if not isinstance(target_element, WebElement):
+                        print(f"[-] Target element: {selectors} isn't WebElement!")
+                        return None
                     elements = target_element.find_elements(*selectors)
                     if self.debug:
-                        print(f"[+] Elements: '{selectors}'")
+                        print(f"[+] Elements by '{selectors}'")
                     return elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
@@ -354,11 +363,14 @@ class WebWalker:
                         until(EC.presence_of_element_located(selectors))
                     element.send_keys(fill_text)
                     if self.debug:
-                        print(f"[+] Text '{fill_text}' in this element")
+                        print(f"[+] Text '{fill_text}' in element: {selectors}")
                 else:
-                    target_element.send_keys(fill_text)
-                    if self.debug:
-                        print(f"[+] Text '{fill_text}' in this element")
+                    if not isinstance(target_element, WebElement):
+                        print(f"[-] Target element: {selectors} isn't WebElement!")
+                    else:
+                        target_element.send_keys(fill_text)
+                        if self.debug:
+                            print(f"[+] Text '{fill_text}' in element: {selectors}")
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
