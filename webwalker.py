@@ -184,6 +184,7 @@ class WebWalker:
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
         """
+
         button = self.get_element(selectors)
         if button is None:
             print(f"[-] Can't click this element: {selectors}'")
@@ -201,6 +202,7 @@ class WebWalker:
             text
              OR None (if error or target_element isn't WebElement)
         """
+
         def _text_of_element(istarget: bool):
             if not istarget:
                 element = self.get_element(selectors)
@@ -230,6 +232,7 @@ class WebWalker:
              list with texts
              OR None (if error)
         """
+
         def _text_of_elements(istarget: bool):
             if not istarget:
                 elements = self.get_elements(selectors)
@@ -261,6 +264,7 @@ class WebWalker:
             value of attribute
              OR None (if error or target_element isn't WebElement)
         """
+
         def _get_attribute_of_element(istarget: bool):
             if not istarget:
                 element = self.get_element(selectors)
@@ -291,6 +295,7 @@ class WebWalker:
             list with values of attributes
              OR None (if error)
         """
+
         def _get_attribute_of_elements(istarget: bool):
             if not istarget:
                 elements = self.get_elements(selectors)
@@ -319,6 +324,7 @@ class WebWalker:
             fill_text: data for filling
             target_element: WebElement for looking for in it
         """
+
         def _fill_element(istarget):
             if not istarget:
                 element = self.get_element(selectors)
@@ -345,6 +351,7 @@ class WebWalker:
             text
              OR None (if error)
         """
+
         element = self.get_element(selectors)
         found_matches = re.findall(regex, element.text)
         if len(found_matches) == 0:
