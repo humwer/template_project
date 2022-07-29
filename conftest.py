@@ -12,9 +12,11 @@ def pytest_addoption(parser):
 def walker(request):
     without_browser = request.config.getoption("without_browser")
     if without_browser == 'true':
-        walker = WebWalker(url=TestSite.URL, without_launch_browser=True)
+        walker = WebWalker(url=TestSite.URL, option_launching_browser=True,
+                           option_ignoring_error=True, debugging=True)
     elif without_browser == 'false':
-        walker = WebWalker(url=TestSite.URL, without_launch_browser=False)
+        walker = WebWalker(url=TestSite.URL, option_launching_browser=False,
+                           option_ignoring_error=True, debugging=True)
     else:
         raise pytest.UsageError("--without_browser should be true or false")
     yield walker
