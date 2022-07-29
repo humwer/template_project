@@ -340,19 +340,25 @@ class WebWalker:
             return None
 
     @real_user(do_delay=DELAY)
-    def fill_element(self, selectors: tuple, fill_text: str = None):
-        """Fill specified element of web page\n
+    def fill_element(self, selectors: tuple, fill_text: str = None, target_element: WebElement = None):
+        """Fill specified element of web page or target element\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
             fill_text: data for filling
+            target_element: WebElement for looking for in it
         """
         try:
             if self.last_error is None:
-                element = WebDriverWait(self.browser, self.wait_time).\
-                    until(EC.presence_of_element_located(selectors))
-                element.send_keys(fill_text)
-                if self.debug:
-                    print(f"[+] Text '{fill_text}' in this element")
+                if target_element is None:
+                    element = WebDriverWait(self.browser, self.wait_time).\
+                        until(EC.presence_of_element_located(selectors))
+                    element.send_keys(fill_text)
+                    if self.debug:
+                        print(f"[+] Text '{fill_text}' in this element")
+                else:
+                    target_element.send_keys(fill_text)
+                    if self.debug:
+                        print(f"[+] Text '{fill_text}' in this element")
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
