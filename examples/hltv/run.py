@@ -16,7 +16,8 @@ def convert_time(hltv_time: str):
 
 if __name__ == '__main__':
     while True:
-        walker = HLTVWalker(HLTVLocators.URL, True, True)
+        walker = HLTVWalker(HLTVLocators.URL, option_launching_browser=True,
+                            option_ignoring_error=True, debugging=True)
         walker.go_to_url()
         walker.skip_cookies()
 
