@@ -1,8 +1,7 @@
-## Template project
-**In this project, I store my implemented classes, functions, etc., which may be useful in the future.**
+## Web Walker
+**An add-on for Selenium that allows you to create your own data collector classes.**
 
 #### Currently implemented:
-+ **webwalker**: class for working with web pages:
   + can get pages;
   + can click buttons;
   + can get text from elements;
