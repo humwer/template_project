@@ -102,31 +102,22 @@ class WebWalker:
             self.last_error = WebDriverException
 
     @real_user(do_delay=DELAY)
-    def text_of_this_element(self, selectors: tuple, some_elements: bool = False):
-        """Get text from elements of web page\n
+    def text_of_this_element(self, selectors: tuple):
+        """Get text from element of web page\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
-            some_elements: look for one element - False, look for some elements - True
         Returns:
             text
-             OR list with texts
              OR None (if error)
         """
         try:
             if self.last_error is None:
                 WebDriverWait(self.browser, self.wait_time). \
                     until(EC.presence_of_element_located(selectors))
-                if not some_elements:
-                    element = self.browser.find_element(*selectors)
-                    if self.debug:
-                        print(f"[+] Text of this element: '{element.text}'")
-                    return element.text
-                else:
-                    elements = self.browser.find_elements(*selectors)
-                    text_elements = [element.text for element in elements]
-                    if self.debug:
-                        print(f"[+] Text of this elements: {text_elements}")
-                    return text_elements
+                element = self.browser.find_element(*selectors)
+                if self.debug:
+                    print(f"[+] Text of this element: '{element.text}'")
+                return element.text
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
@@ -141,32 +132,86 @@ class WebWalker:
             return None
 
     @real_user(do_delay=DELAY)
-    def get_attribute_of_element(self, selectors: tuple, name_attribute: str, some_elements: bool = False):
+    def text_of_this_elements(self, selectors: tuple):
+        """Get text from elements of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+        Returns:
+             list with texts
+             OR None (if error)
+        """
+        try:
+            if self.last_error is None:
+                WebDriverWait(self.browser, self.wait_time). \
+                    until(EC.presence_of_element_located(selectors))
+                elements = self.browser.find_elements(*selectors)
+                text_elements = [element.text for element in elements]
+                if self.debug:
+                    print(f"[+] Text of this elements: {text_elements}")
+                return text_elements
+            else:
+                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
+                      f"Because we have error: {self.last_error}")
+                return None
+        except TimeoutException:
+            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
+            self.last_error = TimeoutException
+            return None
+        except WebDriverException:
+            print("[-] Wow, error. Maybe we have low timeout?")
+            self.last_error = WebDriverException
+            return None
+
+    @real_user(do_delay=DELAY)
+    def get_attribute_of_element(self, selectors: tuple, name_attribute: str):
+        """Get attribute from element of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            name_attribute: name of attribute, e.g. 'class', 'data-qa', 'href'
+        Returns:
+            value of attribute
+             OR None (if error)
+        """
+        try:
+            WebDriverWait(self.browser, self.wait_time). \
+                until(EC.presence_of_element_located(selectors))
+            if self.last_error is None:
+                element = self.browser.find_element(*selectors)
+                if self.debug:
+                    print(f"[+] Attribute of this element: '{element.get_attribute(name_attribute)}'")
+                return element.get_attribute(name_attribute)
+            else:
+                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
+                      f"Because we have error: {self.last_error}")
+                return None
+        except TimeoutException:
+            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
+            self.last_error = TimeoutException
+            return None
+        except WebDriverException:
+            print("[-] Wow, error. Maybe we have low timeout?")
+            self.last_error = WebDriverException
+            return None
+
+    @real_user(do_delay=DELAY)
+    def get_attribute_of_elements(self, selectors: tuple, name_attribute: str):
         """Get attributes from elements of web page\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
             name_attribute: name of attribute, e.g. 'class', 'data-qa', 'href'
-            some_elements: look for one element - False, look for some elements - True
         Returns:
-            value of attribute
-             OR list with values of attributes
+            list with values of attributes
              OR None (if error)
         """
         try:
-            WebDriverWait(self.browser, self.wait_time). \
-                until(EC.presence_of_element_located(selectors))
             if self.last_error is None:
-                if not some_elements:
-                    element = self.browser.find_element(*selectors)
-                    if self.debug:
-                        print(f"[+] Attribute of this element: '{element.get_attribute(name_attribute)}'")
-                    return element.get_attribute(name_attribute)
-                else:
-                    elements = self.browser.find_elements(*selectors)
-                    attr_elements = [element.get_attribute(name_attribute) for element in elements]
-                    if self.debug:
-                        print(f"[+] Attribute of this elements: '{attr_elements}'")
-                    return attr_elements
+                WebDriverWait(self.browser, self.wait_time). \
+                    until(EC.presence_of_element_located(selectors))
+                elements = self.browser.find_elements(*selectors)
+                attr_elements = [element.get_attribute(name_attribute) for element in elements]
+                if self.debug:
+                    print(f"[+] Attribute of this elements: '{attr_elements}'")
+                return attr_elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
@@ -181,30 +226,52 @@ class WebWalker:
             return None
 
     @real_user(do_delay=DELAY)
-    def get_element(self, selectors: tuple, some_elements: bool = False):
-        """Get elements of web page\n
+    def get_element(self, selectors: tuple):
+        """Get element of web page\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
-            some_elements: look for one element - False, look for some elements - True
         Returns:
             element
-             OR list with elements
              OR None (if error)
         """
         try:
-            WebDriverWait(self.browser, self.wait_time). \
-                until(EC.presence_of_element_located(selectors))
             if self.last_error is None:
-                if not some_elements:
-                    element = self.browser.find_element(*selectors)
-                    if self.debug:
-                        print(f"[+] Element by '{selectors}'")
-                    return element
-                else:
-                    elements = self.browser.find_elements(*selectors)
-                    if self.debug:
-                        print(f"[+] Elements: '{selectors}'")
-                    return elements
+                WebDriverWait(self.browser, self.wait_time). \
+                    until(EC.presence_of_element_located(selectors))
+                element = self.browser.find_element(*selectors)
+                if self.debug:
+                    print(f"[+] Element by '{selectors}'")
+                return element
+            else:
+                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
+                      f"Because we have error: {self.last_error}")
+                return None
+        except TimeoutException:
+            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
+            self.last_error = TimeoutException
+            return None
+        except WebDriverException:
+            print("[-] Wow, error. Maybe we have low timeout?")
+            self.last_error = WebDriverException
+            return None
+
+    @real_user(do_delay=DELAY)
+    def get_elements(self, selectors: tuple):
+        """Get elements of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+        Returns:
+            list with elements
+             OR None (if error)
+        """
+        try:
+            if self.last_error is None:
+                WebDriverWait(self.browser, self.wait_time). \
+                    until(EC.presence_of_element_located(selectors))
+                elements = self.browser.find_elements(*selectors)
+                if self.debug:
+                    print(f"[+] Elements: '{selectors}'")
+                return elements
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
                       f"Because we have error: {self.last_error}")
@@ -242,7 +309,6 @@ class WebWalker:
             print("[-] Wow, error. Maybe we have low timeout?")
             self.last_error = WebDriverException
 
-    @real_user(do_delay=DELAY)
     def find_text_in_this_element_by_regex(self, selectors: tuple, regex: str):
         """Get text by regex from elements of web page\n
         Parameters:
