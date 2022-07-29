@@ -12,4 +12,5 @@
   + can get elements.
 
 #### Examples:
-  + **HLTVWalker** - example parsing by webwalker. Required data: teams, points and players. 
+  + **HLTVWalker** - example parsing by webwalker. Required data: teams, points and players;  
+  + **VLRGGWalker** - example parsing by webwalker. Required data: regions and info about teams.  
