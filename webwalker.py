@@ -32,26 +32,39 @@ def real_user(do_delay: bool = True):
 
 class WebWalker:
 
-    def __init__(self, url: str, option_launch_browser: bool = False, option_debug: bool = False):
+    def __init__(self, url: str, option_launching_browser: bool = False,
+                 option_ignoring_error: bool = False, debugging: bool = False):
         """Support class used for creation new classes of parsers\n
         Parameters:
             url: link to website, e.g. https:\\example.com
-            option_launch_browser: option of launch browser.
+            option_launching_browser: option of launching browser.
                 If you want launch - True. Unless you want - False.
-            option_debug: Option of debugging (only for success-messages).
+            option_ignoring_error: option of ignoring errors  (warning: can raises crash)
+                If you want to ignore - True. Unless you want - False.
+            debugging: option of debugging (only for success-messages).
                 If you want print messages - True. Unless you want - False.
         """
         self.url = url
         self.options = Options()
         self.options.add_argument(f'user-agent={UserAgent().random}')
-        if option_launch_browser:
+        if option_launching_browser:
             self.options.add_argument('headless')
         self.browser = webdriver.Chrome(options=self.options)
-        self.last_error = None
+        self.__last_error = None
+        self.__option_ignoring_error = option_ignoring_error
         self.wait_time = 10
-        self.debug = option_debug
+        self.debug = debugging
         if self.debug:
             print("[+] Opened browser Google Chrome")
+
+    @property
+    def last_error(self):
+        """Get last error"""
+        return self.__last_error
+
+    def reset_last_error(self):
+        """Reset last error"""
+        self.__last_error = None
 
     def get_current_url(self):
         """Returns url of active tab or None if raise error"""
@@ -75,10 +88,10 @@ class WebWalker:
             self.browser.get(url)
             if self.debug:
                 print(f'[+] Surfed to: {url}')
-            self.last_error = None
+            self.__last_error = None
         except ValueError:
             print('[-] I cant go here ><')
-            self.last_error = ValueError
+            self.__last_error = ValueError
 
     @real_user(do_delay=DELAY)
     def get_element(self, selectors: tuple, target_element: WebElement = None):
@@ -98,7 +111,7 @@ class WebWalker:
             return element
 
         try:
-            if self.last_error is None:
+            if self.__last_error is None or self.__option_ignoring_error:
                 if target_element is None:
                     WebDriverWait(self.browser, self.wait_time). \
                         until(EC.presence_of_element_located(selectors))
@@ -112,15 +125,15 @@ class WebWalker:
                     return elem
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
+                      f"Because we have error: {self.__last_error}")
                 return None
         except TimeoutException:
             print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
-            self.last_error = TimeoutException
+            self.__last_error = TimeoutException
             return None
         except WebDriverException:
             print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
+            self.__last_error = WebDriverException
             return None
 
     @real_user(do_delay=DELAY)
@@ -141,7 +154,7 @@ class WebWalker:
             return elements
 
         try:
-            if self.last_error is None:
+            if self.__last_error is None or self.__option_ignoring_error:
                 if target_element is None:
                     WebDriverWait(self.browser, self.wait_time). \
                         until(EC.presence_of_element_located(selectors))
@@ -155,15 +168,15 @@ class WebWalker:
                     return elems
             else:
                 print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
+                      f"Because we have error: {self.__last_error}")
                 return None
         except TimeoutException:
             print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
-            self.last_error = TimeoutException
+            self.__last_error = TimeoutException
             return None
         except WebDriverException:
             print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
+            self.__last_error = WebDriverException
             return None
 
     def click_element(self, selectors: tuple):
