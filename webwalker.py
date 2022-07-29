@@ -342,7 +342,7 @@ class WebWalker:
         else:
             _fill_element(True)
 
-    def find_text_in_this_element_by_regex(self, selectors: tuple, regex: str):
+    def find_text_in_element_by_regex(self, selectors: tuple, regex: str):
         """Get text by regex from elements of web page\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
