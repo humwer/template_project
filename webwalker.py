@@ -80,7 +80,7 @@ class WebWalker:
             self.last_error = ValueError
 
     @real_user(do_delay=DELAY)
-    def click_this_element(self, selectors: tuple):
+    def click_element(self, selectors: tuple):
         """Click by specified element of web page\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
@@ -103,7 +103,7 @@ class WebWalker:
             self.last_error = WebDriverException
 
     @real_user(do_delay=DELAY)
-    def text_of_this_element(self, selectors: tuple, target_element: WebElement = None):
+    def text_of_element(self, selectors: tuple, target_element: WebElement = None):
         """Get text from element of web page or target element\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
@@ -143,7 +143,7 @@ class WebWalker:
             return None
 
     @real_user(do_delay=DELAY)
-    def text_of_this_elements(self, selectors: tuple, target_element: WebElement = None):
+    def text_of_elements(self, selectors: tuple, target_element: WebElement = None):
         """Get text from elements of web page or target element\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
@@ -340,7 +340,7 @@ class WebWalker:
             return None
 
     @real_user(do_delay=DELAY)
-    def fill_this_element(self, selectors: tuple, fill_text: str = None):
+    def fill_element(self, selectors: tuple, fill_text: str = None):
         """Fill specified element of web page\n
         Parameters:
             selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
