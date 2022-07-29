@@ -81,200 +81,6 @@ class WebWalker:
             self.last_error = ValueError
 
     @real_user(do_delay=DELAY)
-    def click_element(self, selectors: tuple):
-        """Click by specified element of web page\n
-        Parameters:
-            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
-        """
-        try:
-            if self.last_error is None:
-                button = WebDriverWait(self.browser, self.wait_time).\
-                    until(EC.presence_of_element_located(selectors))
-                if self.debug:
-                    print(f"[+] Clicked element: '{button.text}'")
-                button.click()
-            else:
-                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
-        except TimeoutException:
-            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
-            self.last_error = TimeoutException
-        except WebDriverException:
-            print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
-
-    @real_user(do_delay=DELAY)
-    def text_of_element(self, selectors: tuple, target_element: WebElement = None):
-        """Get text from element of web page or target element\n
-        Parameters:
-            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
-            target_element: WebElement for looking for in it
-        Returns:
-            text
-             OR None (if error or target_element isn't WebElement)
-        """
-        def _text_of_element(webelement):
-            element = webelement.find_element(*selectors)
-            if self.debug:
-                print(f"[+] Text of element {selectors}: '{element.text}'")
-            return element.text
-
-        try:
-            if self.last_error is None:
-                if target_element is None:
-                    WebDriverWait(self.browser, self.wait_time). \
-                        until(EC.presence_of_element_located(selectors))
-                    text = _text_of_element(self.browser)
-                    return text
-                else:
-                    if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element: {selectors} isn't WebElement!")
-                        return None
-                    text = _text_of_element(target_element)
-                    return text
-            else:
-                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
-                return None
-        except TimeoutException:
-            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
-            self.last_error = TimeoutException
-            return None
-        except WebDriverException:
-            print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
-            return None
-
-    @real_user(do_delay=DELAY)
-    def text_of_elements(self, selectors: tuple, target_element: WebElement = None):
-        """Get text from elements of web page or target element\n
-        Parameters:
-            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
-            target_element: WebElement for looking for in it
-        Returns:
-             list with texts
-             OR None (if error)
-        """
-        def _text_of_elements(webelement):
-            elements = webelement.find_elements(*selectors)
-            text_elements = [element.text for element in elements]
-            if self.debug:
-                print(f"[+] Text of elements {selectors}: {text_elements}")
-            return text_elements
-
-        try:
-            if self.last_error is None:
-                if target_element is None:
-                    WebDriverWait(self.browser, self.wait_time). \
-                        until(EC.presence_of_element_located(selectors))
-                    text = _text_of_elements(self.browser)
-                    return text
-                else:
-                    if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element: {selectors} isn't WebElement!")
-                        return None
-                    text = _text_of_elements(target_element)
-                    return text
-            else:
-                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
-                return None
-        except TimeoutException:
-            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
-            self.last_error = TimeoutException
-            return None
-        except WebDriverException:
-            print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
-            return None
-
-    @real_user(do_delay=DELAY)
-    def get_attribute_of_element(self, selectors: tuple, name_attribute: str, target_element: WebElement = None):
-        """Get attribute from element of web page or target element\n
-        Parameters:
-            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
-            name_attribute: name of attribute, e.g. 'class', 'data-qa', 'href'
-            target_element: WebElement for looking for in it
-        Returns:
-            value of attribute
-             OR None (if error or target_element isn't WebElement)
-        """
-        def _get_attribute_of_element(webelement):
-            element = webelement.find_element(*selectors)
-            if self.debug:
-                print(f"[+] Attribute of element {selectors}: '{element.get_attribute(name_attribute)}'")
-            return element.get_attribute(name_attribute)
-        try:
-            if self.last_error is None:
-                if target_element is None:
-                    WebDriverWait(self.browser, self.wait_time). \
-                        until(EC.presence_of_element_located(selectors))
-                    attr = _get_attribute_of_element(self.browser)
-                    return attr
-                else:
-                    if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element: {selectors} isn't WebElement!")
-                        return None
-                    attr = _get_attribute_of_element(target_element)
-                    return attr
-            else:
-                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
-                return None
-        except TimeoutException:
-            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
-            self.last_error = TimeoutException
-            return None
-        except WebDriverException:
-            print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
-            return None
-
-    @real_user(do_delay=DELAY)
-    def get_attribute_of_elements(self, selectors: tuple, name_attribute: str, target_element: WebElement = None):
-        """Get attributes from elements of web page or target element\n
-        Parameters:
-            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
-            name_attribute: name of attribute, e.g. 'class', 'data-qa', 'href'
-            target_element: WebElement for looking for in it
-        Returns:
-            list with values of attributes
-             OR None (if error)
-        """
-        def _get_attribute_of_elements(webelement):
-            elements = webelement.find_elements(*selectors)
-            attr_elements = [element.get_attribute(name_attribute) for element in elements]
-            if self.debug:
-                print(f"[+] Attribute of elements {selectors}: '{attr_elements}'")
-            return attr_elements
-
-        try:
-            if self.last_error is None:
-                if target_element is None:
-                    WebDriverWait(self.browser, self.wait_time). \
-                        until(EC.presence_of_element_located(selectors))
-                    attrs = _get_attribute_of_elements(self.browser)
-                    return attrs
-                else:
-                    if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element: {selectors} isn't WebElement!")
-                        return None
-                    attrs = _get_attribute_of_elements(target_element)
-                    return attrs
-            else:
-                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
-                return None
-        except TimeoutException:
-            print(f"[-] My bad, I don't find '{selectors}' -> element ._.")
-            self.last_error = TimeoutException
-            return None
-        except WebDriverException:
-            print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
-            return None
-
-    @real_user(do_delay=DELAY)
     def get_element(self, selectors: tuple, target_element: WebElement = None):
         """Get element of web page or target element\n
         Parameters:
@@ -284,6 +90,7 @@ class WebWalker:
             element
              OR None (if error or target_element isn't WebElement)
         """
+
         def _get_element(webelement):
             element = webelement.find_element(*selectors)
             if self.debug:
@@ -326,6 +133,7 @@ class WebWalker:
             list with elements
              OR None (if error)
         """
+
         def _get_elements(webelement):
             elements = webelement.find_elements(*selectors)
             if self.debug:
@@ -358,7 +166,139 @@ class WebWalker:
             self.last_error = WebDriverException
             return None
 
-    @real_user(do_delay=DELAY)
+    def click_element(self, selectors: tuple):
+        """Click by specified element of web page\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+        """
+        button = self.get_element(selectors)
+        if button is None:
+            print(f"[-] Can't click this element: {selectors}'")
+        else:
+            if self.debug:
+                print(f"[+] Clicked element: '{button.text}'")
+            button.click()
+
+    def text_of_element(self, selectors: tuple, target_element: WebElement = None):
+        """Get text from element of web page or target element\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            target_element: WebElement for looking for in it
+        Returns:
+            text
+             OR None (if error or target_element isn't WebElement)
+        """
+        def _text_of_element(istarget: bool):
+            if not istarget:
+                element = self.get_element(selectors)
+            else:
+                element = self.get_element(selectors, target_element)
+            if element is None:
+                return None
+            if self.debug:
+                print(f"[+] Text of element {selectors}: '{element.text}'")
+            return element.text
+
+        if target_element is None:
+            text = _text_of_element(False)
+        else:
+            text = _text_of_element(True)
+        if text is None:
+            print(f"[-] Can't get text from this element: {selectors}'")
+            return None
+        return text
+
+    def text_of_elements(self, selectors: tuple, target_element: WebElement = None):
+        """Get text from elements of web page or target element\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            target_element: WebElement for looking for in it
+        Returns:
+             list with texts
+             OR None (if error)
+        """
+        def _text_of_elements(istarget: bool):
+            if not istarget:
+                elements = self.get_elements(selectors)
+            else:
+                elements = self.get_elements(selectors, target_element)
+            if elements is None:
+                return None
+            text_elements = [element.text for element in elements]
+            if self.debug:
+                print(f"[+] Text of elements {selectors}: {text_elements}")
+            return text_elements
+
+        if target_element is None:
+            text = _text_of_elements(False)
+        else:
+            text = _text_of_elements(True)
+        if text is None:
+            print(f"[-] Can't get text from this elements: {selectors}'")
+            return None
+        return text
+
+    def get_attribute_of_element(self, selectors: tuple, name_attribute: str, target_element: WebElement = None):
+        """Get attribute from element of web page or target element\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            name_attribute: name of attribute, e.g. 'class', 'data-qa', 'href'
+            target_element: WebElement for looking for in it
+        Returns:
+            value of attribute
+             OR None (if error or target_element isn't WebElement)
+        """
+        def _get_attribute_of_element(istarget: bool):
+            if not istarget:
+                element = self.get_element(selectors)
+            else:
+                element = self.get_element(selectors, target_element)
+            if element is None:
+                return None
+            if self.debug:
+                print(f"[+] Attribute of element {selectors}: '{element.get_attribute(name_attribute)}'")
+            return element.get_attribute(name_attribute)
+
+        if target_element is None:
+            attr = _get_attribute_of_element(False)
+        else:
+            attr = _get_attribute_of_element(True)
+        if attr is None:
+            print(f"[-] Can't get attribute from this element: {selectors}'")
+            return None
+        return attr
+
+    def get_attribute_of_elements(self, selectors: tuple, name_attribute: str, target_element: WebElement = None):
+        """Get attributes from elements of web page or target element\n
+        Parameters:
+            selectors: tuple of search method and value, e.g. (By.CSS_SELECTOR, '.class')
+            name_attribute: name of attribute, e.g. 'class', 'data-qa', 'href'
+            target_element: WebElement for looking for in it
+        Returns:
+            list with values of attributes
+             OR None (if error)
+        """
+        def _get_attribute_of_elements(istarget: bool):
+            if not istarget:
+                elements = self.get_elements(selectors)
+            else:
+                elements = self.get_elements(selectors, target_element)
+            if elements is None:
+                return None
+            attr_elements = [element.get_attribute(name_attribute) for element in elements]
+            if self.debug:
+                print(f"[+] Attribute of elements {selectors}: '{attr_elements}'")
+            return attr_elements
+
+        if target_element is None:
+            attrs = _get_attribute_of_elements(False)
+        else:
+            attrs = _get_attribute_of_elements(True)
+        if attrs is None:
+            print(f"[-] Can't get attributes from this elements: {selectors}'")
+            return None
+        return attrs
+
     def fill_element(self, selectors: tuple, fill_text: str = None, target_element: WebElement = None):
         """Fill specified element of web page or target element\n
         Parameters:
@@ -366,31 +306,22 @@ class WebWalker:
             fill_text: data for filling
             target_element: WebElement for looking for in it
         """
-        def _fill_element(webelement: WebElement):
-            webelement.send_keys(fill_text)
-            if self.debug:
-                print(f"[+] Text '{fill_text}' in element: {selectors}")
-
-        try:
-            if self.last_error is None:
-                if target_element is None:
-                    element = WebDriverWait(self.browser, self.wait_time).\
-                        until(EC.presence_of_element_located(selectors))
-                    _fill_element(element)
-                else:
-                    if not isinstance(target_element, WebElement):
-                        print(f"[-] Target element: {selectors} isn't WebElement!")
-                    else:
-                        _fill_element(target_element)
+        def _fill_element(istarget):
+            if not istarget:
+                element = self.get_element(selectors)
             else:
-                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
-        except TimeoutException:
-            print(f"[-] My bad, I cant set text '{fill_text}'")
-            self.last_error = TimeoutException
-        except WebDriverException:
-            print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
+                element = self.get_element(selectors, target_element)
+            if element is not None:
+                element.send_keys(fill_text)
+                if self.debug:
+                    print(f"[+] Text '{fill_text}' in element: {selectors}")
+            else:
+                print(f"[-] Element {selectors} isn't fill")
+
+        if target_element is None:
+            _fill_element(False)
+        else:
+            _fill_element(True)
 
     def find_text_in_this_element_by_regex(self, selectors: tuple, regex: str):
         """Get text by regex from elements of web page\n
@@ -401,28 +332,13 @@ class WebWalker:
             text
              OR None (if error)
         """
-        try:
-            if self.last_error is None:
-                element = WebDriverWait(self.browser, self.wait_time).\
-                    until(EC.presence_of_element_located(selectors))
-                found_matches = re.findall(regex, element.text)
-                if len(found_matches) == 0:
-                    print(f"[-] Not found matches in this element by regex: '{regex}'")
-                    return found_matches
-                else:
-                    if self.debug:
-                        print(f"[+] Found matches: {len(found_matches)} "
-                              f"in this element by regex: '{regex}'")
-                    return found_matches
-            else:
-                print("[x] Hey, I dont will do that while you not use func 'go_to_url',\n"
-                      f"Because we have error: {self.last_error}")
-                return []
-        except TimeoutException:
-            print(f"[-] My bad, I cant found text by regex: '{regex}'")
-            self.last_error = TimeoutException
-            return []
-        except WebDriverException:
-            print("[-] Wow, error. Maybe we have low timeout?")
-            self.last_error = WebDriverException
-            return []
+        element = self.get_element(selectors)
+        found_matches = re.findall(regex, element.text)
+        if len(found_matches) == 0:
+            print(f"[-] Not found matches in this element by regex: '{regex}'")
+            return found_matches
+        else:
+            if self.debug:
+                print(f"[+] Found matches: {len(found_matches)} "
+                      f"in this element by regex: '{regex}'")
+            return found_matches
