@@ -14,6 +14,13 @@ class HLTVWalker(WebWalker):
     def skip_cookies(self):
         self.click_element(HLTVLocators.COOKIES_BUTTON)
 
+    def get_teams_positions(self):
+        positions: list = self.text_of_elements(HLTVLocators.TEAM_POSITION)
+        if positions is None:
+            return False
+        else:
+            return [pos[1:] for pos in positions]
+
     def get_team_names(self):
         teams: list = self.text_of_elements(HLTVLocators.TEAM_NAME)
         if teams is None:
