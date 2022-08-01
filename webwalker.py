@@ -47,7 +47,7 @@ class WebWalker:
         self.url = url
         self.options = Options()
         self.options.add_argument(f'user-agent={UserAgent().random}')
-        if option_launching_browser:
+        if not option_launching_browser:
             self.options.add_argument('headless')
         self.browser = webdriver.Chrome(options=self.options)
         self.__last_error = None
