@@ -4,7 +4,7 @@ import json
 
 if __name__ == '__main__':
     while True:
-        walker = VLRGGWalker(VLRGGLocators.URL, option_launching_browser=True,
+        walker = VLRGGWalker(VLRGGLocators.URL, option_launching_browser=False,
                              option_ignoring_error=False, debugging=True)
         walker.go_to_url()
         regions = walker.get_regions()
