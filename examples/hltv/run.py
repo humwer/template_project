@@ -16,7 +16,7 @@ def convert_time(hltv_time: str):
 
 if __name__ == '__main__':
     while True:
-        walker = HLTVWalker(HLTVLocators.URL, option_launching_browser=True,
+        walker = HLTVWalker(HLTVLocators.URL, option_launching_browser=False,
                             option_ignoring_error=True, debugging=True)
         walker.go_to_url()
         walker.skip_cookies()
@@ -25,6 +25,9 @@ if __name__ == '__main__':
         if not hltv_actual_date:
             continue
         rating_actual_date = convert_time(hltv_time=hltv_actual_date)
+        teams_positions = walker.get_teams_positions()
+        if not teams_positions:
+            continue
         teams_name = walker.get_team_names()
         if not teams_name:
             continue
@@ -36,8 +39,9 @@ if __name__ == '__main__':
             continue
 
         data: dict = {rating_actual_date: {}}
-        for name, points, players in zip(teams_name, teams_points, teams_players):
-            data[rating_actual_date][name] = {'points': re.findall('[0-9]{1,4}', points)[0], 'players': players}
+        for pos, name, points, players in zip(teams_positions, teams_name, teams_points, teams_players):
+            data[rating_actual_date][name] = {'position': pos, 'points': re.findall('[0-9]{1,4}', points)[0],
+                                              'players': players}
         with open('data.json', 'w') as output:
             json.dump(data, output, indent=4)
 
