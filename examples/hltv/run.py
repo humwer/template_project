@@ -23,19 +23,24 @@ if __name__ == '__main__':
 
         hltv_actual_date = walker.actual_date()
         if not hltv_actual_date:
+            walker.reset_last_error()
             continue
         rating_actual_date = convert_time(hltv_time=hltv_actual_date)
         teams_positions = walker.get_teams_positions()
         if not teams_positions:
+            walker.reset_last_error()
             continue
         teams_name = walker.get_team_names()
         if not teams_name:
+            walker.reset_last_error()
             continue
         teams_points = walker.get_points_teams()
         if not teams_points:
+            walker.reset_last_error()
             continue
         teams_players = walker.get_team_players()
         if not teams_players:
+            walker.reset_last_error()
             continue
 
         data: dict = {rating_actual_date: {}}
