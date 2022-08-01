@@ -1,6 +1,7 @@
 {
     "2022-7-25": {
         "FaZe": {
+            "position": "1",
             "points": "941",
             "players": [
                 "karrigan",
@@ -11,6 +12,7 @@
             ]
         },
         "Natus Vincere": {
+            "position": "2",
             "points": "906",
             "players": [
                 "s1mple",
@@ -21,6 +23,7 @@
             ]
         },
         "Cloud9": {
+            "position": "3",
             "points": "466",
             "players": [
                 "HObbit",
@@ -31,6 +34,7 @@
             ]
         },
         "ENCE": {
+            "position": "4",
             "points": "421",
             "players": [
                 "Snappi",
@@ -41,6 +45,7 @@
             ]
         },
         "Astralis": {
+            "position": "5",
             "points": "402",
             "players": [
                 "Xyp9x",
@@ -51,6 +56,7 @@
             ]
         },
         "Vitality": {
+            "position": "6",
             "points": "398",
             "players": [
                 "apEX",
@@ -61,6 +67,7 @@
             ]
         },
         "Movistar Riders": {
+            "position": "7",
             "points": "376",
             "players": [
                 "alex",
@@ -71,6 +78,7 @@
             ]
         },
         "G2": {
+            "position": "8",
             "points": "370",
             "players": [
                 "JACKZ",
@@ -81,6 +89,7 @@
             ]
         },
         "NIP": {
+            "position": "9",
             "points": "323",
             "players": [
                 "es3tag",
@@ -91,6 +100,7 @@
             ]
         },
         "MOUZ": {
+            "position": "10",
             "points": "310",
             "players": [
                 "dexter",
@@ -101,6 +111,7 @@
             ]
         },
         "FURIA": {
+            "position": "11",
             "points": "302",
             "players": [
                 "arT",
@@ -111,6 +122,7 @@
             ]
         },
         "BIG": {
+            "position": "12",
             "points": "286",
             "players": [
                 "tabseN",
@@ -121,6 +133,7 @@
             ]
         },
         "Heroic": {
+            "position": "13",
             "points": "257",
             "players": [
                 "cadiaN",
@@ -131,6 +144,7 @@
             ]
         },
         "Liquid": {
+            "position": "14",
             "points": "253",
             "players": [
                 "nitr0",
@@ -140,6 +154,7 @@
             ]
         },
         "Spirit": {
+            "position": "15",
             "points": "233",
             "players": [
                 "chopper",
@@ -150,6 +165,7 @@
             ]
         },
         "OG": {
+            "position": "16",
             "points": "194",
             "players": [
                 "nexa",
@@ -160,6 +176,7 @@
             ]
         },
         "Outsiders": {
+            "position": "17",
             "points": "163",
             "players": [
                 "FL1T",
@@ -170,6 +187,7 @@
             ]
         },
         "00NATION": {
+            "position": "18",
             "points": "107",
             "players": [
                 "coldzera",
@@ -180,6 +198,7 @@
             ]
         },
         "Sprout": {
+            "position": "19",
             "points": "98",
             "players": [
                 "raalz",
@@ -190,6 +209,7 @@
             ]
         },
         "forZe": {
+            "position": "20",
             "points": "84",
             "players": [
                 "Jerry",
@@ -200,6 +220,7 @@
             ]
         },
         "Finest": {
+            "position": "21",
             "points": "78",
             "players": [
                 "twist",
@@ -210,6 +231,7 @@
             ]
         },
         "9z": {
+            "position": "22",
             "points": "78",
             "players": [
                 "max",
@@ -220,6 +242,7 @@
             ]
         },
         "Imperial": {
+            "position": "23",
             "points": "76",
             "players": [
                 "fnx",
@@ -230,6 +253,7 @@
             ]
         },
         "HEET": {
+            "position": "24",
             "points": "65",
             "players": [
                 "bodyy",
@@ -240,6 +264,7 @@
             ]
         },
         "MIBR": {
+            "position": "25",
             "points": "64",
             "players": [
                 "chelo",
@@ -250,6 +275,7 @@
             ]
         },
         "Rare Atom": {
+            "position": "26",
             "points": "64",
             "players": [
                 "advent",
@@ -260,6 +286,7 @@
             ]
         },
         "Eternal Fire": {
+            "position": "27",
             "points": "57",
             "players": [
                 "MAJ3R",
@@ -270,6 +297,7 @@
             ]
         },
         "Bad News Eagles": {
+            "position": "28",
             "points": "57",
             "players": [
                 "rigoN",
@@ -280,6 +308,7 @@
             ]
         },
         "ex-MAD Lions": {
+            "position": "29",
             "points": "54",
             "players": [
                 "TMB",
@@ -290,6 +319,7 @@
             ]
         },
         "Falcons": {
+            "position": "30",
             "points": "52",
             "players": [
                 "hAdji",
