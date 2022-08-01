@@ -11,14 +11,14 @@
             "FNATIC": {
                 "Place": 2,
                 "Country": "Europe",
-                "Score": 2167
+                "Score": 2168
             }
         },
         {
             "Guild Esports": {
                 "Place": 3,
                 "Country": "Europe",
-                "Score": 1870
+                "Score": 1871
             }
         },
         {
@@ -32,35 +32,35 @@
             "Team Liquid": {
                 "Place": 5,
                 "Country": "Europe",
-                "Score": 1821
+                "Score": 1819
             }
         },
         {
             "M3 Champions": {
                 "Place": 6,
                 "Country": "Russia",
-                "Score": 1807
+                "Score": 1808
             }
         },
         {
             "G2 Esports": {
                 "Place": 7,
                 "Country": "Europe",
-                "Score": 1716
-            }
-        },
-        {
-            "EXCEL": {
-                "Place": 8,
-                "Country": "Europe",
-                "Score": 1669
+                "Score": 1714
             }
         },
         {
             "Natus Vincere": {
-                "Place": 9,
+                "Place": 8,
                 "Country": "Russia",
                 "Score": 1665
+            }
+        },
+        {
+            "Case Esports": {
+                "Place": 9,
+                "Country": "Europe",
+                "Score": 1655
             }
         },
         {
@@ -83,28 +83,28 @@
             "XSET": {
                 "Place": 2,
                 "Country": "United States",
-                "Score": 2255
+                "Score": 2264
             }
         },
         {
             "FaZe Clan": {
                 "Place": 3,
                 "Country": "United States",
-                "Score": 1989
+                "Score": 1991
             }
         },
         {
             "NRG Esports": {
                 "Place": 4,
                 "Country": "United States",
-                "Score": 1941
+                "Score": 1942
             }
         },
         {
             "Cloud9": {
                 "Place": 5,
                 "Country": "United States",
-                "Score": 1895
+                "Score": 1902
             }
         },
         {
@@ -118,28 +118,28 @@
             "Ghost Gaming": {
                 "Place": 7,
                 "Country": "United States",
-                "Score": 1858
+                "Score": 1859
             }
         },
         {
             "Shopify Rebellion": {
                 "Place": 8,
                 "Country": "United States",
-                "Score": 1856
+                "Score": 1857
             }
         },
         {
             "100 Thieves": {
                 "Place": 9,
                 "Country": "United States",
-                "Score": 1851
+                "Score": 1852
             }
         },
         {
-            "Version1": {
+            "Dark Ratio": {
                 "Place": 10,
-                "Country": "Canada",
-                "Score": 1831
+                "Country": "United States",
+                "Score": 1821
             }
         }
     ],
@@ -155,21 +155,21 @@
             "Ninjas In Pyjamas": {
                 "Place": 2,
                 "Country": "Brazil",
-                "Score": 1866
+                "Score": 1863
             }
         },
         {
             "Keyd Stars": {
                 "Place": 3,
                 "Country": "Brazil",
-                "Score": 1834
+                "Score": 1832
             }
         },
         {
             "FURIA": {
                 "Place": 4,
                 "Country": "Brazil",
-                "Score": 1746
+                "Score": 1745
             }
         },
         {
@@ -201,17 +201,17 @@
             }
         },
         {
-            "MIBR": {
+            "Rise Gaming": {
                 "Place": 9,
                 "Country": "Brazil",
-                "Score": 1646
+                "Score": 1655
             }
         },
         {
-            "Rise Gaming": {
+            "MIBR": {
                 "Place": 10,
                 "Country": "Brazil",
-                "Score": 1642
+                "Score": 1646
             }
         }
     ],
@@ -227,7 +227,7 @@
             "XERXIA Esports": {
                 "Place": 2,
                 "Country": "Thailand",
-                "Score": 1853
+                "Score": 1852
             }
         },
         {
@@ -241,49 +241,49 @@
             "BOOM Esports": {
                 "Place": 4,
                 "Country": "Indonesia",
-                "Score": 1711
-            }
-        },
-        {
-            "Team Secret": {
-                "Place": 5,
-                "Country": "Philippines",
-                "Score": 1703
+                "Score": 1710
             }
         },
         {
             "Alter Ego": {
-                "Place": 6,
+                "Place": 5,
                 "Country": "Indonesia",
-                "Score": 1692
+                "Score": 1707
+            }
+        },
+        {
+            "Team Secret": {
+                "Place": 6,
+                "Country": "Philippines",
+                "Score": 1703
             }
         },
         {
             "Velocity Gaming": {
                 "Place": 7,
                 "Country": "India",
-                "Score": 1662
-            }
-        },
-        {
-            "BLEED": {
-                "Place": 8,
-                "Country": "Singapore",
-                "Score": 1655
-            }
-        },
-        {
-            "FULL SENSE": {
-                "Place": 9,
-                "Country": "Thailand",
-                "Score": 1648
+                "Score": 1666
             }
         },
         {
             "Enigma Gaming": {
-                "Place": 10,
+                "Place": 8,
                 "Country": "India",
-                "Score": 1646
+                "Score": 1655
+            }
+        },
+        {
+            "BLEED": {
+                "Place": 9,
+                "Country": "Singapore",
+                "Score": 1654
+            }
+        },
+        {
+            "FULL SENSE": {
+                "Place": 10,
+                "Country": "Thailand",
+                "Score": 1648
             }
         }
     ],
@@ -429,7 +429,7 @@
             "NORTHEPTION": {
                 "Place": 2,
                 "Country": "Japan",
-                "Score": 2221
+                "Score": 2260
             }
         },
         {
@@ -447,14 +447,14 @@
             }
         },
         {
-            "SCARZ": {
+            "FAV gaming": {
                 "Place": 5,
                 "Country": "Japan",
                 "Score": 1702
             }
         },
         {
-            "FAV gaming": {
+            "SCARZ": {
                 "Place": 6,
                 "Country": "Japan",
                 "Score": 1702
@@ -501,7 +501,7 @@
             "KRÜ Esports": {
                 "Place": 2,
                 "Country": "Chile",
-                "Score": 2207
+                "Score": 2210
             }
         },
         {
@@ -582,142 +582,142 @@
             "ORDER": {
                 "Place": 1,
                 "Country": "Australia",
-                "Score": 2139
+                "Score": 2133
             }
         },
         {
             "BOBO": {
                 "Place": 2,
                 "Country": "Australia",
-                "Score": 2053
+                "Score": 2034
             }
         },
         {
             "HONEY BADGERS": {
                 "Place": 3,
                 "Country": "Australia",
-                "Score": 2020
+                "Score": 2010
             }
         },
         {
             "WithYouWithMe": {
                 "Place": 4,
                 "Country": "Australia",
-                "Score": 1893
+                "Score": 1881
             }
         },
         {
             "Bonkers": {
                 "Place": 5,
                 "Country": "Australia",
-                "Score": 1856
+                "Score": 1846
             }
         },
         {
             "Funcrew": {
                 "Place": 6,
                 "Country": "Australia",
-                "Score": 1801
+                "Score": 1791
             }
         },
         {
             "REIGN": {
                 "Place": 7,
                 "Country": "Australia",
-                "Score": 1657
+                "Score": 1647
             }
         },
         {
             "SamPhamFanClub": {
                 "Place": 8,
                 "Country": "Australia",
-                "Score": 1641
+                "Score": 1631
             }
         },
         {
             "Mindfreak": {
                 "Place": 9,
                 "Country": "Australia",
-                "Score": 1614
+                "Score": 1603
             }
         },
         {
             "Trident Esports": {
                 "Place": 10,
                 "Country": "Australia",
-                "Score": 1557
+                "Score": 1548
             }
         }
     ],
     "MENA": [
         {
-            "Team Falcons": {
+            "XPLDZ": {
                 "Place": 1,
-                "Country": "Saudi Arabia",
+                "Country": "Egypt",
                 "Score": 2000
             }
         },
         {
-            "XPLDZ": {
+            "Team RA'AD": {
                 "Place": 2,
                 "Country": "Egypt",
-                "Score": 1972
+                "Score": 1975
             }
         },
         {
-            "Team RA'AD": {
+            "Team Falcons": {
                 "Place": 3,
-                "Country": "Egypt",
-                "Score": 1947
+                "Country": "Saudi Arabia",
+                "Score": 1962
             }
         },
         {
             "Geekay Esports": {
                 "Place": 4,
                 "Country": "United Arab Emirates",
-                "Score": 1879
+                "Score": 1906
             }
         },
         {
             "MLC Esports": {
                 "Place": 5,
                 "Country": "Morocco",
-                "Score": 1868
+                "Score": 1894
             }
         },
         {
             "Team Duelist": {
                 "Place": 6,
                 "Country": "United Arab Emirates",
-                "Score": 1818
+                "Score": 1844
             }
         },
         {
             "vSlash Esports": {
                 "Place": 7,
                 "Country": "United Arab Emirates",
-                "Score": 1816
+                "Score": 1842
             }
         },
         {
             "01 Esports": {
                 "Place": 8,
                 "Country": "Saudi Arabia",
-                "Score": 1809
+                "Score": 1835
             }
         },
         {
             "NASR Esports": {
                 "Place": 9,
                 "Country": "Jordan",
-                "Score": 1778
+                "Score": 1804
             }
         },
         {
             "YaLLa Esports": {
                 "Place": 10,
                 "Country": "United Arab Emirates",
-                "Score": 1774
+                "Score": 1799
             }
         }
     ],
@@ -737,16 +737,16 @@
             }
         },
         {
-            "Team Liquid Brazil": {
+            "Alter Ego Celestè": {
                 "Place": 3,
-                "Country": "Brazil",
+                "Country": "Indonesia",
                 "Score": 1921
             }
         },
         {
-            "Alter Ego Celestè": {
+            "Team Liquid Brazil": {
                 "Place": 4,
-                "Country": "Indonesia",
+                "Country": "Brazil",
                 "Score": 1921
             }
         },
